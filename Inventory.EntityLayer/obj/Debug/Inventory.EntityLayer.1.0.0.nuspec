@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Inventory.EntityLayer</id>
+    <version>1.0.0</version>
+    <authors>Inventory.EntityLayer</authors>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework="net5.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="E:\DOTNET\Web API\Inventory\Inventory.EntityLayer\bin\Debug\net5.0\Inventory.EntityLayer.dll" target="lib\net5.0\Inventory.EntityLayer.dll" />
+  </files>
+</package>

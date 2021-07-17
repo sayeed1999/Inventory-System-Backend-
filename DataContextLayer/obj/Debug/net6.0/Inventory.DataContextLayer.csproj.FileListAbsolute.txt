@@ -1,0 +1,17 @@
+E:\DOTNET\Web API\Inventory\DataContextLayer\bin\Debug\net6.0\Inventory.DataContextLayer.deps.json
+E:\DOTNET\Web API\Inventory\DataContextLayer\bin\Debug\net6.0\Inventory.DataContextLayer.runtimeconfig.json
+E:\DOTNET\Web API\Inventory\DataContextLayer\bin\Debug\net6.0\Inventory.DataContextLayer.dll
+E:\DOTNET\Web API\Inventory\DataContextLayer\bin\Debug\net6.0\ref\Inventory.DataContextLayer.dll
+E:\DOTNET\Web API\Inventory\DataContextLayer\bin\Debug\net6.0\Inventory.DataContextLayer.pdb
+E:\DOTNET\Web API\Inventory\DataContextLayer\bin\Debug\net6.0\Inventory.EntityLayer.dll
+E:\DOTNET\Web API\Inventory\DataContextLayer\bin\Debug\net6.0\Inventory.EntityLayer.pdb
+E:\DOTNET\Web API\Inventory\DataContextLayer\obj\Debug\net6.0\Inventory.DataContextLayer.csproj.AssemblyReference.cache
+E:\DOTNET\Web API\Inventory\DataContextLayer\obj\Debug\net6.0\Inventory.DataContextLayer.GeneratedMSBuildEditorConfig.editorconfig
+E:\DOTNET\Web API\Inventory\DataContextLayer\obj\Debug\net6.0\Inventory.DataContextLayer.AssemblyInfoInputs.cache
+E:\DOTNET\Web API\Inventory\DataContextLayer\obj\Debug\net6.0\Inventory.DataContextLayer.AssemblyInfo.cs
+E:\DOTNET\Web API\Inventory\DataContextLayer\obj\Debug\net6.0\Inventory.DataContextLayer.csproj.CoreCompileInputs.cache
+E:\DOTNET\Web API\Inventory\DataContextLayer\obj\Debug\net6.0\Inventory.DataContextLayer.csproj.CopyComplete
+E:\DOTNET\Web API\Inventory\DataContextLayer\obj\Debug\net6.0\Inventory.DataContextLayer.dll
+E:\DOTNET\Web API\Inventory\DataContextLayer\obj\Debug\net6.0\ref\Inventory.DataContextLayer.dll
+E:\DOTNET\Web API\Inventory\DataContextLayer\obj\Debug\net6.0\Inventory.DataContextLayer.pdb
+E:\DOTNET\Web API\Inventory\DataContextLayer\obj\Debug\net6.0\Inventory.DataContextLayer.genruntimeconfig.cache

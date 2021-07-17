@@ -1,0 +1,5 @@
+E:\DOTNET\Web API\Inventory\Inventory.DataContextLayer\obj\Debug\net6.0\Inventory.DataContextLayer.csproj.AssemblyReference.cache
+E:\DOTNET\Web API\Inventory\Inventory.DataContextLayer\obj\Debug\net6.0\Inventory.DataContextLayer.GeneratedMSBuildEditorConfig.editorconfig
+E:\DOTNET\Web API\Inventory\Inventory.DataContextLayer\obj\Debug\net6.0\Inventory.DataContextLayer.AssemblyInfoInputs.cache
+E:\DOTNET\Web API\Inventory\Inventory.DataContextLayer\obj\Debug\net6.0\Inventory.DataContextLayer.AssemblyInfo.cs
+E:\DOTNET\Web API\Inventory\Inventory.DataContextLayer\obj\Debug\net6.0\Inventory.DataContextLayer.csproj.CoreCompileInputs.cache
