@@ -21,22 +21,25 @@ namespace Inventory.API.Controllers
         [HttpGet]
         public async Task<ActionResult<ServiceResponse<IEnumerable<Product>>>> Get()
         {
-            return Ok(await _productService.GetAll());
+            var serviceResponse = await _productService.GetAll();
+            if (serviceResponse.Success) return Ok(serviceResponse);
+            return NotFound(serviceResponse);
         }
 
         [HttpGet("{id:int}")]
         public async Task<ActionResult<ServiceResponse<Product>>> Get(int id)
         {
-            var serviceResponse = await _productService.GetSingleById(id);
+            var serviceResponse = await _productService.GetById(id);
             if (serviceResponse.Success == false) return NotFound();
             return Ok(serviceResponse);
         }
 
-        [HttpPut]
-        public async Task<ActionResult<ServiceResponse<Product>>> Put(Product product)
+        [HttpPut("{id:int}")]
+        public async Task<ActionResult<ServiceResponse<Product>>> Put(Product product, int id)
         {
-            var serviceResponse = await _productService.Update(product);
-            return Ok(serviceResponse);
+            var serviceResponse = await _productService.Update(product, id);
+            if (serviceResponse.Success) return Ok(serviceResponse);
+            return NotFound(serviceResponse);
         }
 
         [HttpPost]
@@ -45,13 +48,6 @@ namespace Inventory.API.Controllers
             var serviceResponse = await _productService.Add(product);
             if (serviceResponse.Success) return Ok(serviceResponse);
             return BadRequest(serviceResponse);
-        }
-
-        [HttpDelete]
-        public async Task<ActionResult<ServiceResponse<Product>>> Delete(Product product)
-        {
-            var serviceResponse = await _productService.Delete(product);
-            return Ok(serviceResponse);
         }
 
         [HttpDelete("{id:int}")]

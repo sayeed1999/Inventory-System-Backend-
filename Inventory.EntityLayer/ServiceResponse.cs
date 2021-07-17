@@ -10,6 +10,6 @@ namespace Inventory.EntityLayer
     {
         public T Data { get; set; }
         public bool Success { get; set; } = true;
-        public string Message { get; set; } = String.Empty;
+        public string Message { get; set; } = null;
     }
 }

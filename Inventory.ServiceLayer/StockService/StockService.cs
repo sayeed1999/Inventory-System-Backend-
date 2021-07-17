@@ -12,68 +12,38 @@ namespace Inventory.ServiceLayer.StockService
     public class StockService : IStockService
     {
         private InventoryDbContext _dbContext;
-        public StockService(InventoryDbContext dbContext)
+        private IRepository<Stock> _repository;
+        public StockService(InventoryDbContext dbContext) // injected by Asp.Net Core injector
         {
             _dbContext = dbContext;
+            _repository = new Repository<Stock>();
         }
 
         public async Task<ServiceResponse<Stock>> Add(Stock stock)
         {
-            var singleResponse = new ServiceResponse<Stock>();
-            singleResponse.Data = stock;
-            _dbContext.Stocks.Add(singleResponse.Data);
-            await _dbContext.SaveChangesAsync();
-            singleResponse.Message = "New object created!";
-            return singleResponse;
-        }
-
-        public async Task<ServiceResponse<Stock>> Delete(Stock stock)
-        {
-            var singleResponse = new ServiceResponse<Stock>();
-            var original_item = await _dbContext.Stocks.FindAsync(stock.Id); // i assume it will be selected from the existing database, so it will be there
-            _dbContext.Stocks.Remove(original_item);
-            await _dbContext.SaveChangesAsync();
-            singleResponse.Data = stock;
-            singleResponse.Message = "Object deleted successfully";
-            return singleResponse;
+            return await _repository.Add(stock);
         }
 
         public async Task<ServiceResponse<Stock>> Delete(int id)
         {
-            var singleResponse = new ServiceResponse<Stock>();
-            var original_item = await _dbContext.Stocks.FindAsync(id);
-            if (original_item != null)
-            {
-                _dbContext.Stocks.Remove(original_item);
-                await _dbContext.SaveChangesAsync();
-                singleResponse.Message = "Object deleted successfully";
-            }
-            else
-            {
-                singleResponse.Message = "Object not found!";
-                singleResponse.Success = false;
-            }
-            singleResponse.Data = original_item;
-            return singleResponse;
+            return await _repository.Delete(id);
         }
 
         public async Task<ServiceResponse<IEnumerable<Stock>>> GetAll()
         {
-            var serviceResponse = new ServiceResponse<IEnumerable<Stock>>();
-            serviceResponse.Data = await _dbContext.Stocks.ToListAsync();
-            return serviceResponse;
+            return await _repository.GetAll();
         }
 
-        public async Task<ServiceResponse<Stock>> GetSingleById(int id)
+        public async Task<ServiceResponse<Stock>> GetById(int id)
         {
-            var serviceResponse = new ServiceResponse<Stock>();
-            serviceResponse.Data = await _dbContext.Stocks.FindAsync(id);
-            if (serviceResponse.Data == null)
-            {
-                serviceResponse.Success = false;
-                serviceResponse.Message = "No Item with this Id";
-            }
-            return serviceResponse;
+            return await _repository.GetById(id);
         }
+
+        public async Task<ServiceResponse<Stock>> Update(Stock stock, int id)
+        {
+            stock.Id = id;
+            return await _repository.Update(stock, id);
+        }
+
     }
 }

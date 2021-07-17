@@ -22,7 +22,9 @@ namespace Inventory.API.Controllers
         [HttpGet]
         public async Task<ActionResult<ServiceResponse<IEnumerable<Sale>>>> Get()
         {
-            return Ok(await _salesService.GetAll());
+            var serviceResponse = await _salesService.GetAll();
+            if (serviceResponse.Success) return Ok(serviceResponse);
+            return NotFound(serviceResponse);
         }
 
         [HttpGet("{id:int}")]
@@ -37,21 +39,16 @@ namespace Inventory.API.Controllers
         public async Task<ActionResult<ServiceResponse<Sale>>> Post(Sale sale)
         {
             var serviceResponse = await _salesService.Add(sale);
-            return Ok(serviceResponse);
+            if (serviceResponse.Success) return Ok(serviceResponse);
+            return NotFound(serviceResponse);
         }
 
-        [HttpPut]
-        public async Task<ActionResult<ServiceResponse<Sale>>> Put(Sale sale)
+        [HttpPut("{id:int}")]
+        public async Task<ActionResult<ServiceResponse<Sale>>> Put(Sale sale, int id)
         {
-            var serviceResponse = await _salesService.Update(sale);
-            return Ok(serviceResponse);
-        }
-
-        [HttpDelete]
-        public async Task<ActionResult<ServiceResponse<Sale>>> Delete(Sale sale)
-        {
-            var serviceResponse = await _salesService.Delete(sale);
-            return Ok(serviceResponse);
+            var serviceResponse = await _salesService.Update(sale, id);
+            if (serviceResponse.Success) return Ok(serviceResponse);
+            return NotFound(serviceResponse);
         }
 
         [HttpDelete("{id:int}")]

@@ -10,9 +10,7 @@ namespace Inventory.DataContextLayer
     {
         public InventoryDbContext() { }
         public InventoryDbContext(DbContextOptions<InventoryDbContext> options) : base(options) { }
-
         private string _connectionString = @"Server=SAYEEDS-CODING-\SQLEXPRESS;Database=InventoryDb;Trusted_Connection=True;";
-
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }

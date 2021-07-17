@@ -22,13 +22,15 @@ namespace Inventory.API.Controllers
         [HttpGet]
         public async Task<ActionResult<ServiceResponse<IEnumerable<Customer>>>> Get()
         {
-            return Ok(await _customerService.GetAll());
+            var serviceResponse = await _customerService.GetAll();
+            if (serviceResponse.Success) return Ok(serviceResponse);
+            return NotFound(serviceResponse);
         }
 
         [HttpGet("{id:int}")]
         public async Task<ActionResult<ServiceResponse<Customer>>> Get(int id)
         {
-            var serviceResponse = await _customerService.GetSingleById(id);
+            var serviceResponse = await _customerService.GetById(id);
             if (serviceResponse.Success == false) return NotFound();
             return Ok(serviceResponse);
         }
@@ -38,21 +40,15 @@ namespace Inventory.API.Controllers
         {
             var serviceResponse = await _customerService.Add(customer);
             if (serviceResponse.Success) return Ok(serviceResponse);
-            return BadRequest(serviceResponse);
+            return BadRequest(serviceResponse); //bad!
         }
 
-        [HttpPut]
-        public async Task<ActionResult<ServiceResponse<Customer>>> Put(Customer customer)
+        [HttpPut("{id:int}")]
+        public async Task<ActionResult<ServiceResponse<Customer>>> Put(Customer customer, int id)
         {
-            var serviceResponse = await _customerService.Add(customer);
-            return Ok(serviceResponse);
-        }
-
-        [HttpDelete]
-        public async Task<ActionResult<ServiceResponse<Customer>>> Delete(Customer customer)
-        {
-            var serviceResponse = await _customerService.Delete(customer);
-            return Ok(serviceResponse);
+            var serviceResponse = await _customerService.Update(customer, id);
+            if (serviceResponse.Success) return Ok(serviceResponse);
+            return NotFound(serviceResponse);
         }
 
         [HttpDelete("{id:int}")]

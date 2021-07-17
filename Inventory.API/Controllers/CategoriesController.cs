@@ -22,13 +22,14 @@ namespace Inventory.API.Controllers
         public async Task<ActionResult<ServiceResponse<IEnumerable<Category>>>> Get()
         {
             var serviceResponse = await _categoryService.GetAll();
-            return Ok(serviceResponse);
+            if(serviceResponse.Success) return Ok(serviceResponse);
+            return NotFound(serviceResponse);
         }
 
         [HttpGet("{id:int}")]
         public async Task<ActionResult<ServiceResponse<Category>>> Get(int id)
         {
-            var serviceResponse = await _categoryService.GetSingleById(id);
+            var serviceResponse = await _categoryService.GetById(id);
             if (serviceResponse.Success == false) return NotFound(serviceResponse);
             return Ok(serviceResponse);    
         }
@@ -36,31 +37,26 @@ namespace Inventory.API.Controllers
         [HttpPost]
         public async Task<ActionResult<ServiceResponse<Category>>> Post(Category category)
         {
-            var serviceResponse = await _categoryService.AddCategory(category);
+            var serviceResponse = await _categoryService.Add(category);
             if(serviceResponse.Success) return Ok(serviceResponse);
-            return BadRequest(serviceResponse);
+            return NotFound(serviceResponse); //i didn't implement any BadRequest, may be it was needed here..
         }
 
-        [HttpPut]
-        public async Task<ActionResult<ServiceResponse<Category>>> Put(Category category)
+        [HttpPut("{id:int}")]
+        public async Task<ActionResult<ServiceResponse<Category>>> Put(Category category, int id)
         {
-            var serviceResponse = await _categoryService.UpdateCategory(category);
-            return Ok(serviceResponse);
-        }
-
-        [HttpDelete]
-        public async Task<ActionResult<ServiceResponse<Category>>> Delete(Category category)
-        {
-            var serviceResponse = await _categoryService.DeleteCategory(category);
+            var serviceResponse = await _categoryService.Update(category, id);
+            if(!serviceResponse.Success) return NotFound(serviceResponse);
             return Ok(serviceResponse);
         }
 
         [HttpDelete("{id:int}")]
         public async Task<ActionResult<ServiceResponse<Category>>> Delete(int id)
         {
-            var serviceResponse = await _categoryService.DeleteCategory(id);
+            var serviceResponse = await _categoryService.Delete(id);
             if(serviceResponse.Success) return Ok(serviceResponse);
             return NotFound(serviceResponse);
         }
+
     }
 }

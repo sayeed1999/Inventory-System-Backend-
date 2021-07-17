@@ -21,13 +21,15 @@ namespace Inventory.API.Controllers
         [HttpGet]
         public async Task<ActionResult<ServiceResponse<IEnumerable<Stock>>>> Get()
         {
-            return Ok(await _stockService.GetAll());
+            var serviceResponse = await _stockService.GetAll();
+            if (serviceResponse.Success) return Ok(serviceResponse);
+            return NotFound(serviceResponse);
         }
 
         [HttpGet("{id:int}")]
         public async Task<ActionResult<ServiceResponse<Stock>>> Get(int id)
         {
-            var serviceResponse = await _stockService.GetSingleById(id);
+            var serviceResponse = await _stockService.GetById(id);
             if (serviceResponse.Success == false) return NotFound();
             return Ok(serviceResponse);
         }
@@ -40,11 +42,12 @@ namespace Inventory.API.Controllers
             return BadRequest(serviceResponse);
         }
 
-        [HttpDelete]
-        public async Task<ActionResult<ServiceResponse<Stock>>> Delete(Stock stock)
+        [HttpPut("{id:int}")]
+        public async Task<ActionResult<ServiceResponse<Stock>>> Put(Stock stock, int id)
         {
-            var serviceResponse = await _stockService.Delete(stock);
-            return Ok(serviceResponse);
+            var serviceResponse = await _stockService.Update(stock, id);
+            if (serviceResponse.Success) return Ok(serviceResponse);
+            return BadRequest(serviceResponse);
         }
 
         [HttpDelete("{id:int}")]
