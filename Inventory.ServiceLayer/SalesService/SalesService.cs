@@ -16,11 +16,12 @@ namespace Inventory.ServiceLayer.SalesService
         public SalesService(InventoryDbContext dbContext)
         {
             _dbContext = dbContext; // asp.net core's built-in injector has it done!
-            _repository = new Repository<Sale>();
+            _repository = new SaleRepository();
         }
 
         public async Task<ServiceResponse<Sale>> Add(Sale sale)
         {
+            sale.Id = 0;
             return await _repository.Add(sale);
         }
 

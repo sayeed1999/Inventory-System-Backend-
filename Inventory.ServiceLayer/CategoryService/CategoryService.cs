@@ -20,6 +20,7 @@ namespace Inventory.ServiceLayer.CategoryService
 
         public async Task<ServiceResponse<Category>> Add(Category category)
         {
+            category.Id = 0;
             return await _repository.Add(category);
         }
 

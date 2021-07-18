@@ -63,7 +63,7 @@ namespace Inventory.DataContextLayer
             return serviceResponse;
         }
         
-        public async Task<ServiceResponse<IEnumerable<T>>> GetAll()
+        public virtual async Task<ServiceResponse<IEnumerable<T>>> GetAll()
         {
             var serviceResponse = new ServiceResponse<IEnumerable<T>>();
             try

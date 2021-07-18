@@ -20,6 +20,7 @@ namespace Inventory.ServiceLayer.CustomerService
 
         public async Task<ServiceResponse<Customer>> Add(Customer customer)
         {
+            customer.Id = 0;
             return await _repository.Add(customer);
         }
 

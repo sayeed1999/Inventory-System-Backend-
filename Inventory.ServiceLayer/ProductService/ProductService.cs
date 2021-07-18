@@ -21,6 +21,7 @@ namespace Inventory.ServiceLayer.ProductService
 
         public async Task<ServiceResponse<Product>> Add(Product product)
         {
+            product.Id = 0;
             return await _repository.Add(product);
         }
 
