@@ -12,10 +12,10 @@ namespace Inventory.ServiceLayer.CustomerService
     {
         private InventoryDbContext _dbContext;
         private IRepository<Customer> _repository;
-        public CustomerService(InventoryDbContext dbContext)
+        public CustomerService(InventoryDbContext dbContext, IRepository<Customer> repository)
         {
             _dbContext = dbContext; // asp.net core injector will inject it!
-            _repository = new Repository<Customer>(); // and i inject it manually though i want it with injector too..
+            _repository = repository;
         }
 
         public async Task<ServiceResponse<Customer>> Add(Customer customer)

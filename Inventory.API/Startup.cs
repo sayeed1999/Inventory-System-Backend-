@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Inventory.DataContextLayer;
+using Inventory.EntityLayer;
 
 // my http services.. 
 using Inventory.ServiceLayer.CategoryService;
@@ -35,6 +36,10 @@ namespace Inventory.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<InventoryDbContext>();
+
+            services.AddSingleton(typeof(IRepository<>), typeof(Repository<>));
+            services.AddSingleton(typeof(IRepository<Sale>), typeof(SaleRepository)); //specified the overriden one!
+            
             services.AddControllers();
             services.AddControllers().AddNewtonsoftJson(options =>
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
@@ -48,6 +53,7 @@ namespace Inventory.API
             services.AddScoped<IStockService, StockService>();
             services.AddScoped<ICustomerService, CustomerService>();
             services.AddScoped<ISalesService, SalesService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

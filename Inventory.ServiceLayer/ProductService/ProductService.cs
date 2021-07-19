@@ -13,10 +13,10 @@ namespace Inventory.ServiceLayer.ProductService
     {
         private readonly InventoryDbContext _dbContext;
         private readonly IRepository<Product> _repository;
-        public ProductService(InventoryDbContext dbContext) // this dbContext is injected from Startup.cs!
+        public ProductService(InventoryDbContext dbContext, IRepository<Product> repository) // this dbContext is injected from Startup.cs!
         {
             _dbContext = dbContext;
-            _repository = new Repository<Product>();
+            _repository = repository;
         }
 
         public async Task<ServiceResponse<Product>> Add(Product product)

@@ -13,10 +13,11 @@ namespace Inventory.ServiceLayer.SalesService
     {
         private readonly InventoryDbContext _dbContext;
         private readonly IRepository<Sale> _repository;
-        public SalesService(InventoryDbContext dbContext)
+        public SalesService(InventoryDbContext dbContext, IRepository<Sale> repository)
         {
             _dbContext = dbContext; // asp.net core's built-in injector has it done!
-            _repository = new SaleRepository();
+            //_repository = new SaleRepository(); i need it to be SaleRepository, not Repository<Sale>.
+            _repository = repository; //overriden to SaleRepository in Startup.cs configuration!
         }
 
         public async Task<ServiceResponse<Sale>> Add(Sale sale)

@@ -13,10 +13,10 @@ namespace Inventory.ServiceLayer.StockService
     {
         private InventoryDbContext _dbContext;
         private IRepository<Stock> _repository;
-        public StockService(InventoryDbContext dbContext) // injected by Asp.Net Core injector
+        public StockService(InventoryDbContext dbContext, IRepository<Stock> repository)
         {
             _dbContext = dbContext;
-            _repository = new Repository<Stock>();
+            _repository = repository;
         }
 
         public async Task<ServiceResponse<Stock>> Add(Stock stock)

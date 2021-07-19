@@ -12,10 +12,10 @@ namespace Inventory.ServiceLayer.CategoryService
     {
         private readonly InventoryDbContext _dbContext;
         private readonly IRepository<Category> _repository;
-        public CategoryService(InventoryDbContext context) // injected from startup.cs
+        public CategoryService(InventoryDbContext context, IRepository<Category> repository) // injected from startup.cs
         {
             _dbContext = context;
-            _repository = new Repository<Category>(); // how to use ninject !?
+            _repository = repository; // how to use ninject !?
         }
 
         public async Task<ServiceResponse<Category>> Add(Category category)
