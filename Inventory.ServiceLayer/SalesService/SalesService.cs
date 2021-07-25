@@ -5,18 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Inventory.DataContextLayer;
-using Microsoft.EntityFrameworkCore;
+using Inventory.DataContextLayer.Repository;
 
 namespace Inventory.ServiceLayer.SalesService
 {
     public class SalesService : ISalesService
     {
-        private readonly InventoryDbContext _dbContext;
         private readonly IRepository<Sale> _repository;
         public SalesService(InventoryDbContext dbContext, IRepository<Sale> repository)
         {
-            _dbContext = dbContext; // asp.net core's built-in injector has it done!
-            //_repository = new SaleRepository(); i need it to be SaleRepository, not Repository<Sale>.
             _repository = repository; //overriden to SaleRepository in Startup.cs configuration!
         }
 

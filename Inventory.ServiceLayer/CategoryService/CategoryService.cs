@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Inventory.EntityLayer;
 using Inventory.DataContextLayer;
+using Inventory.DataContextLayer.Repository;
 using Microsoft.EntityFrameworkCore;
 
 namespace Inventory.ServiceLayer.CategoryService

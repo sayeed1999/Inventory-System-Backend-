@@ -4,18 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Inventory.DataContextLayer;
+using Inventory.DataContextLayer.Repository;
 using Inventory.EntityLayer;
-using Microsoft.EntityFrameworkCore;
 
 namespace Inventory.ServiceLayer.StockService
 {
     public class StockService : IStockService
     {
-        private InventoryDbContext _dbContext;
         private IRepository<Stock> _repository;
         public StockService(InventoryDbContext dbContext, IRepository<Stock> repository)
         {
-            _dbContext = dbContext;
             _repository = repository;
         }
 

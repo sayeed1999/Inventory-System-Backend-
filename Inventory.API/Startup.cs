@@ -1,25 +1,20 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Inventory.DataContextLayer;
+using Inventory.DataContextLayer.Repository;
+using Inventory.DataContextLayer.SaleRepository;
 using Inventory.EntityLayer;
-
 // my http services.. 
 using Inventory.ServiceLayer.CategoryService;
 using Inventory.ServiceLayer.ProductService;
 using Inventory.ServiceLayer.StockService;
 using Inventory.ServiceLayer.CustomerService;
 using Inventory.ServiceLayer.SalesService;
+using Newtonsoft.Json.Serialization;
 
 namespace Inventory.API
 {
@@ -41,9 +36,10 @@ namespace Inventory.API
             services.AddSingleton(typeof(IRepository<Sale>), typeof(SaleRepository)); //specified the overriden one!
             
             services.AddControllers();
-            services.AddControllers().AddNewtonsoftJson(options =>
-                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
-            );
+            services.AddControllers().AddNewtonsoftJson(options => {
+                options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Inventory.API", Version = "v1" });

@@ -28,7 +28,8 @@ namespace Inventory.DataContextLayer
                 .Property(c => c.Name).IsRequired().HasMaxLength(100);
             modelBuilder.Entity<Category>()
                 .HasMany(c => c.Products)
-                .WithOne(a => a.Category).HasForeignKey(a => a.CategoryId);
+                .WithOne(a => a.Category).HasForeignKey(a => a.CategoryId)
+                .OnDelete(DeleteBehavior.Restrict);
             
             modelBuilder.Entity<Product>()
                 .Property(a => a.Name).IsRequired().HasMaxLength(150);
@@ -36,7 +37,8 @@ namespace Inventory.DataContextLayer
                 .Property(a => a.Price).IsRequired();
             modelBuilder.Entity<Product>()
                 .HasMany(a => a.Stocks)
-                .WithOne(c => c.Product).HasForeignKey(c => c.ProductId);
+                .WithOne(c => c.Product).HasForeignKey(c => c.ProductId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Stock>()
                 .Property(a => a.Quantity).IsRequired();
@@ -55,11 +57,13 @@ namespace Inventory.DataContextLayer
 
             modelBuilder.Entity<Customer>()
                 .HasMany(c => c.Sales)
-                .WithOne(a => a.Customer).HasForeignKey(a => a.CustomerId);
+                .WithOne(a => a.Customer).HasForeignKey(a => a.CustomerId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Product>()
                 .HasMany(b => b.Sales)
-                .WithOne(a => a.Product).HasForeignKey(a => a.ProductId);
+                .WithOne(a => a.Product).HasForeignKey(a => a.ProductId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

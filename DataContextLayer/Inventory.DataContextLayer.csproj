@@ -21,4 +21,11 @@
     <ProjectReference Include="..\Inventory.EntityLayer\Inventory.EntityLayer.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="CategoryRepository\" />
+    <Folder Include="CustomerRepository\" />
+    <Folder Include="StockRepository\" />
+    <Folder Include="ProductRepository\" />
+  </ItemGroup>
+
 </Project>

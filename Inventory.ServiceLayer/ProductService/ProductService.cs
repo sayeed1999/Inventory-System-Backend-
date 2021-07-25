@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Inventory.DataContextLayer;
+using Inventory.DataContextLayer.Repository;
 using Microsoft.EntityFrameworkCore;
 
 namespace Inventory.ServiceLayer.ProductService

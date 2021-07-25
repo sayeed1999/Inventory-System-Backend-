@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace Inventory.EntityLayer
 {
-    public class Product : Table
+    public class Product
     {
         public Product()
         {
             this.Stocks = new HashSet<Stock>();
             this.Sales = new HashSet<Sale>();
         }
+        public int Id { get; set; }
         public string Name { get; set; }
         public float Price { get; set; }
         public Category Category { get; set; }

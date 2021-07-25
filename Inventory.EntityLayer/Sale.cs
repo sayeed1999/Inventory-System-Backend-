@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Inventory.EntityLayer
 {
-    public class Sale : Table
+    public class Sale
     {
+        public int Id { get; set; }
         public Product Product { get; set; }
         public int ProductId { get; set; }
         public float Quantity { get; set; }

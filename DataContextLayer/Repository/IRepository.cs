@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Inventory.EntityLayer;
 
-namespace Inventory.DataContextLayer
+namespace Inventory.DataContextLayer.Repository
 {
     public interface IRepository<T> where T : class
     {

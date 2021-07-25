@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Inventory.DataContextLayer.Repository;
 using Inventory.EntityLayer;
 using Microsoft.EntityFrameworkCore;
 
-namespace Inventory.DataContextLayer
+namespace Inventory.DataContextLayer.SaleRepository
 {
     public class SaleRepository : Repository<Sale>
     {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Inventory.EntityLayer;
 
-namespace Inventory.DataContextLayer
+namespace Inventory.DataContextLayer.Repository
 {
     public class Repository<T> : IRepository<T> where T : class
     {
@@ -21,6 +21,7 @@ namespace Inventory.DataContextLayer
             var serviceResponse = new ServiceResponse<T>();
             try
             {
+                item.GetType().GetProperty("Id")?.SetValue(item, 0); //
                 _dbContext.Set<T>().Add(item);
                 await _dbContext.SaveChangesAsync();
                 serviceResponse.Data = item;

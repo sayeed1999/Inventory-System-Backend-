@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Inventory.EntityLayer;
 using Inventory.DataContextLayer;
-using Microsoft.EntityFrameworkCore;
+using Inventory.DataContextLayer.Repository;
 
 namespace Inventory.ServiceLayer.CustomerService
 {
