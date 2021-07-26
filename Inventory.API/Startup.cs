@@ -8,6 +8,8 @@ using Microsoft.OpenApi.Models;
 using Inventory.DataContextLayer;
 using Inventory.DataContextLayer.Repository;
 using Inventory.DataContextLayer.SaleRepository;
+using Inventory.DataContextLayer.StockRepository;
+using Inventory.DataContextLayer.ProductRepository;
 using Inventory.EntityLayer;
 // my http services.. 
 using Inventory.ServiceLayer.CategoryService;
@@ -32,10 +34,11 @@ namespace Inventory.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<InventoryDbContext>();
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped(typeof(IRepository<Product>), typeof(ProductRepository));
+            services.AddScoped(typeof(IRepository<Stock>), typeof(StockRepository));
+            services.AddScoped(typeof(IRepository<Sale>), typeof(SaleRepository)); //specified the overriden one!
 
-            services.AddSingleton(typeof(IRepository<>), typeof(Repository<>));
-            services.AddSingleton(typeof(IRepository<Sale>), typeof(SaleRepository)); //specified the overriden one!
-            
             services.AddControllers();
             services.AddControllers().AddNewtonsoftJson(options => {
                 options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();

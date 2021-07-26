@@ -24,8 +24,6 @@
   <ItemGroup>
     <Folder Include="CategoryRepository\" />
     <Folder Include="CustomerRepository\" />
-    <Folder Include="StockRepository\" />
-    <Folder Include="ProductRepository\" />
   </ItemGroup>
 
 </Project>

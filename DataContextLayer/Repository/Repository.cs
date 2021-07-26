@@ -11,12 +11,12 @@ namespace Inventory.DataContextLayer.Repository
     public class Repository<T> : IRepository<T> where T : class
     {
         private readonly InventoryDbContext _dbContext;
-        public Repository()
+        public Repository(InventoryDbContext dbContext)
         {
-            _dbContext = new InventoryDbContext();
+            _dbContext = dbContext;
         }
 
-        public async Task<ServiceResponse<T>> Add(T item)
+        public virtual async Task<ServiceResponse<T>> Add(T item)
         {
             var serviceResponse = new ServiceResponse<T>();
             try
@@ -104,7 +104,7 @@ namespace Inventory.DataContextLayer.Repository
             return serviceResponse;
         }
 
-        public async Task<ServiceResponse<T>> Update(T item)
+        public virtual async Task<ServiceResponse<T>> Update(T item)
         {
             var serviceResponse = new ServiceResponse<T>();
 

@@ -26,27 +26,12 @@ namespace Inventory.DataContextLayer
         {
             modelBuilder.Entity<Category>()
                 .Property(c => c.Name).IsRequired().HasMaxLength(100);
-            modelBuilder.Entity<Category>()
-                .HasMany(c => c.Products)
-                .WithOne(a => a.Category).HasForeignKey(a => a.CategoryId)
-                .OnDelete(DeleteBehavior.Restrict);
             
             modelBuilder.Entity<Product>()
                 .Property(a => a.Name).IsRequired().HasMaxLength(150);
             modelBuilder.Entity<Product>()
                 .Property(a => a.Price).IsRequired();
-            modelBuilder.Entity<Product>()
-                .HasMany(a => a.Stocks)
-                .WithOne(c => c.Product).HasForeignKey(c => c.ProductId)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<Stock>()
-                .Property(a => a.Quantity).IsRequired();
-            //modelBuilder.Entity<Stock>()
-              //  .Property(a => a.Price).IsRequired();
-            modelBuilder.Entity<Stock>()
-                .Property(a => a.ProductId).IsRequired();
-
+            
             modelBuilder.Entity<Customer>()
                 .Property(a => a.Name).IsRequired().HasMaxLength(100);
             modelBuilder.Entity<Customer>()
@@ -64,6 +49,17 @@ namespace Inventory.DataContextLayer
                 .HasMany(b => b.Sales)
                 .WithOne(a => a.Product).HasForeignKey(a => a.ProductId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Product>()
+                .HasMany(a => a.Stocks)
+                .WithOne(c => c.Product).HasForeignKey(c => c.ProductId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Category>()
+                .HasMany(c => c.Products)
+                .WithOne(a => a.Category).HasForeignKey(a => a.CategoryId)
+                .OnDelete(DeleteBehavior.Restrict);
+
         }
     }
 }

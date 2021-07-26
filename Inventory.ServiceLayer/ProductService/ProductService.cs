@@ -12,11 +12,9 @@ namespace Inventory.ServiceLayer.ProductService
 {
     public class ProductService : IProductService
     {
-        private readonly InventoryDbContext _dbContext;
         private readonly IRepository<Product> _repository;
         public ProductService(InventoryDbContext dbContext, IRepository<Product> repository) // this dbContext is injected from Startup.cs!
         {
-            _dbContext = dbContext;
             _repository = repository;
         }
 
