@@ -42,8 +42,8 @@ namespace Inventory.DataContextLayer
 
             modelBuilder.Entity<Stock>()
                 .Property(a => a.Quantity).IsRequired();
-            modelBuilder.Entity<Stock>()
-                .Property(a => a.Price).IsRequired();
+            //modelBuilder.Entity<Stock>()
+              //  .Property(a => a.Price).IsRequired();
             modelBuilder.Entity<Stock>()
                 .Property(a => a.ProductId).IsRequired();
 
