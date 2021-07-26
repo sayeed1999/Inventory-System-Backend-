@@ -42,10 +42,10 @@ namespace Inventory.API.Controllers
             return NotFound(serviceResponse); //i didn't implement any BadRequest, may be it was needed here..
         }
 
-        [HttpPut("{id:int}")]
-        public async Task<ActionResult<ServiceResponse<Category>>> Put(Category category, int id)
+        [HttpPut]
+        public async Task<ActionResult<ServiceResponse<Category>>> Put(Category category)
         {
-            var serviceResponse = await _categoryService.Update(category, id);
+            var serviceResponse = await _categoryService.Update(category);
             if(!serviceResponse.Success) return NotFound(serviceResponse);
             return Ok(serviceResponse);
         }

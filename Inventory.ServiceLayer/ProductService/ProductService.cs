@@ -22,7 +22,7 @@ namespace Inventory.ServiceLayer.ProductService
 
         public async Task<ServiceResponse<Product>> Add(Product product)
         {
-            product.Id = 0;
+            //product.Id = 0;
             return await _repository.Add(product);
         }
 
@@ -41,10 +41,10 @@ namespace Inventory.ServiceLayer.ProductService
             return await _repository.GetById(id);
         }
 
-        public async Task<ServiceResponse<Product>> Update(Product product, int id)
+        public async Task<ServiceResponse<Product>> Update(Product product)
         {
-            product.Id = id;
-            return await _repository.Update(product, id);
+            //product.Id = id;
+            return await _repository.Update(product);
         }
     }
 }

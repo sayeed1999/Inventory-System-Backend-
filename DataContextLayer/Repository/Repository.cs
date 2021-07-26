@@ -21,7 +21,7 @@ namespace Inventory.DataContextLayer.Repository
             var serviceResponse = new ServiceResponse<T>();
             try
             {
-                item.GetType().GetProperty("Id")?.SetValue(item, 0); //
+                item.GetType().GetProperty("Id")?.SetValue(item, 0); //setting the PK of the entity as 0
                 _dbContext.Set<T>().Add(item);
                 await _dbContext.SaveChangesAsync();
                 serviceResponse.Data = item;
@@ -104,9 +104,12 @@ namespace Inventory.DataContextLayer.Repository
             return serviceResponse;
         }
 
-        public async Task<ServiceResponse<T>> Update(T item, int id)
+        public async Task<ServiceResponse<T>> Update(T item)
         {
             var serviceResponse = new ServiceResponse<T>();
+
+            int id = (int)item.GetType().GetProperty("Id")?.GetValue(item);
+
             try
             {
                 serviceResponse.Data = await _dbContext.Set<T>().FindAsync(id);

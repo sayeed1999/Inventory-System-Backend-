@@ -20,7 +20,7 @@ namespace Inventory.ServiceLayer.CustomerService
 
         public async Task<ServiceResponse<Customer>> Add(Customer customer)
         {
-            customer.Id = 0;
+            //customer.Id = 0;
             return await _repository.Add(customer);
         }
 
@@ -39,10 +39,10 @@ namespace Inventory.ServiceLayer.CustomerService
             return await _repository.GetById(id);
         }
 
-        public async Task<ServiceResponse<Customer>> Update(Customer customer, int id)
+        public async Task<ServiceResponse<Customer>> Update(Customer customer)
         {
-            customer.Id = id;
-            return await _repository.Update(customer, id);
+            //customer.Id = id;
+            return await _repository.Update(customer);
         }
     }
 }

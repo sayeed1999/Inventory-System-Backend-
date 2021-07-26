@@ -21,7 +21,7 @@ namespace Inventory.ServiceLayer.CategoryService
 
         public async Task<ServiceResponse<Category>> Add(Category category)
         {
-            category.Id = 0;
+            //category.Id = 0;
             return await _repository.Add(category);
         }
 
@@ -40,10 +40,9 @@ namespace Inventory.ServiceLayer.CategoryService
             return await _repository.GetById(id);
         }
 
-        public async Task<ServiceResponse<Category>> Update(Category category, int id)
+        public async Task<ServiceResponse<Category>> Update(Category category)
         {
-            category.Id = id;
-            return await _repository.Update(category, id);
+            return await _repository.Update(category);
         }
     }
 }

@@ -43,10 +43,10 @@ namespace Inventory.API.Controllers
             return NotFound(serviceResponse);
         }
 
-        [HttpPut("{id:int}")]
-        public async Task<ActionResult<ServiceResponse<Sale>>> Put(Sale sale, int id)
+        [HttpPut]
+        public async Task<ActionResult<ServiceResponse<Sale>>> Put(Sale sale)
         {
-            var serviceResponse = await _salesService.Update(sale, id);
+            var serviceResponse = await _salesService.Update(sale);
             if (serviceResponse.Success) return Ok(serviceResponse);
             return NotFound(serviceResponse);
         }

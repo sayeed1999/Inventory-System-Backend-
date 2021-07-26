@@ -19,7 +19,7 @@ namespace Inventory.ServiceLayer.SalesService
 
         public async Task<ServiceResponse<Sale>> Add(Sale sale)
         {
-            sale.Id = 0;
+            //sale.Id = 0;
             return await _repository.Add(sale);
         }
 
@@ -38,10 +38,10 @@ namespace Inventory.ServiceLayer.SalesService
             return await _repository.GetById(id);
         }
 
-        public async Task<ServiceResponse<Sale>> Update(Sale sale, int id)
+        public async Task<ServiceResponse<Sale>> Update(Sale sale)
         {
-            sale.Id = id;
-            return await _repository.Update(sale, id);
+            //sale.Id = id;
+            return await _repository.Update(sale);
         }
     }
 }

@@ -42,10 +42,10 @@ namespace Inventory.API.Controllers
             return BadRequest(serviceResponse);
         }
 
-        [HttpPut("{id:int}")]
-        public async Task<ActionResult<ServiceResponse<Stock>>> Put(Stock stock, int id)
+        [HttpPut]
+        public async Task<ActionResult<ServiceResponse<Stock>>> Put(Stock stock)
         {
-            var serviceResponse = await _stockService.Update(stock, id);
+            var serviceResponse = await _stockService.Update(stock);
             if (serviceResponse.Success) return Ok(serviceResponse);
             return BadRequest(serviceResponse);
         }

@@ -14,7 +14,7 @@ namespace Inventory.ServiceLayer.SalesService
         public Task<ServiceResponse<IEnumerable<Sale>>> GetAll();
         public Task<ServiceResponse<Sale>> GetById(int id);
         public Task<ServiceResponse<Sale>> Add(Sale sale);
-        public Task<ServiceResponse<Sale>> Update(Sale sale, int id);
+        public Task<ServiceResponse<Sale>> Update(Sale sale);
         public Task<ServiceResponse<Sale>> Delete(int id);
     }
 }

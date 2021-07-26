@@ -13,6 +13,6 @@ namespace Inventory.EntityLayer
         public int ProductId { get; set; }
         public float Quantity { get; set; }
         public float Price { get; set; }
-        public DateTime DatePurchased { get; set; }
+        public DateTime Date { get; set; }
     }
 }

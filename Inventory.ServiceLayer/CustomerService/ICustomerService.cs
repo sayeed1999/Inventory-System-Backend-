@@ -12,7 +12,7 @@ namespace Inventory.ServiceLayer.CustomerService
         public Task<ServiceResponse<IEnumerable<Customer>>> GetAll(); // the 'async' modifier can only be used in methods that have a body.
         public Task<ServiceResponse<Customer>> GetById(int id);
         public Task<ServiceResponse<Customer>> Add(Customer customer);
-        public Task<ServiceResponse<Customer>> Update(Customer customer, int id);
+        public Task<ServiceResponse<Customer>> Update(Customer customer);
         public Task<ServiceResponse<Customer>> Delete(int id);
 
     }

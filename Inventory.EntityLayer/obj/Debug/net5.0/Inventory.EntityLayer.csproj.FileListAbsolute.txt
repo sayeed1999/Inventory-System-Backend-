@@ -9,3 +9,4 @@ E:\DOTNET\Web API\Inventory\Inventory.EntityLayer\obj\Debug\net5.0\Inventory.Ent
 E:\DOTNET\Web API\Inventory\Inventory.EntityLayer\obj\Debug\net5.0\Inventory.EntityLayer.dll
 E:\DOTNET\Web API\Inventory\Inventory.EntityLayer\obj\Debug\net5.0\ref\Inventory.EntityLayer.dll
 E:\DOTNET\Web API\Inventory\Inventory.EntityLayer\obj\Debug\net5.0\Inventory.EntityLayer.pdb
+E:\DOTNET\Web API\Inventory\Inventory.EntityLayer\obj\Debug\net5.0\Inventory.EntityLayer.csproj.AssemblyReference.cache
